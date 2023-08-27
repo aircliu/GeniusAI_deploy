@@ -1,29 +1,15 @@
 {
-  "headers": [
-    {
-      "source": "/api/(.*)",
-      "headers": [
-        { "key": "Access-Control-Allow-Credentials", "value": "true" },
-        {
-          "key": "Access-Control-Allow-Origin",
-          "value": "https://geniusai.education"
-        },
-        {
-          "key": "Access-Control-Allow-Methods",
-          "value": "GET,OPTIONS,PATCH,DELETE,POST,PUT"
-        },
-        {
-          "key": "Access-Control-Allow-Headers",
-          "value": "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version"
-        }
-      ]
-    }
-  ],
   "version": 2,
   "builds": [
-    {
-      "src": "./app.py",
-      "use": "@vercel/python"
-    }
+    { "src": "server.py", "use": "@vercel/python" }
+  ],
+  "routes": [
+    { "src": "/api/hello", "dest": "server.py" },
+    { "src": "/api/login", "dest": "server.py" },
+    { "src": "/api/create-account", "dest": "server.py" },
+    { "src": "/api/logout", "dest": "server.py" },
+    { "src": "/api/login-info", "dest": "server.py" },
+    { "src": "/api/chatbot", "dest": "server.py" },
+    { "src": "/api/kb-test", "dest": "server.py" }
   ]
 }
