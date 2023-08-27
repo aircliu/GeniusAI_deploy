@@ -149,7 +149,7 @@ def get_login_info():
     try:
         return jsonify({
             'status': 'Success',
-            'user': session['user'],
+            'user': 'dummy@gmail.com', # Returned session['user'] originally
             'loggedIn': True
         })
     except:
