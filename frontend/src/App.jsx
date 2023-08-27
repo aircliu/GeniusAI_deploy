@@ -22,7 +22,7 @@ import Leetcode from "./pages/Leetcode";
 import PythonFundamentals from "./pages/PythonPages/PythonFundamentals";
 import Conditionals from "./pages/PythonPages/Conditionals";
 import Functions from "./pages/PythonPages/Functions";
-import ObjectOriented from "./pges/PythonPages/ObjectOriented";
+import ObjectOriented from "./pages/PythonPages/ObjectOriented";
 import Modules from "./pages/PythonPages/Modules";
 import Test from "./pages/Test";
 
