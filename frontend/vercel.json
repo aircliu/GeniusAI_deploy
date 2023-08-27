@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "builds": [
+    { "src": "server.py", "use": "@vercel/python" }
+  ],
+  "routes": [
+    { "src": "/api/hello", "dest": "server.py" },
+    { "src": "/api/login", "dest": "server.py" },
+    { "src": "/api/create-account", "dest": "server.py" },
+    { "src": "/api/logout", "dest": "server.py" },
+    { "src": "/api/login-info", "dest": "server.py" },
+    { "src": "/api/chatbot", "dest": "server.py" },
+    { "src": "/api/kb-test", "dest": "server.py" }
+  ]
+}
