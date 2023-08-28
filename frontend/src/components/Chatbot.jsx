@@ -182,6 +182,7 @@ const Chatbot = () => {
                   mr={3}
                   value={typedMessage} // the 'typedMessage' state is assigned as value
                   onChange={handleInputChange} // update 'typedMessage' state while typing
+                  width="400px"
                 />
                 <InputRightElement width="4.5rem">
                   <Button
