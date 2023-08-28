@@ -29,6 +29,7 @@ import {
 import { useNavigate } from "react-router-dom"; // Import the useNavigate hook
 
 import { Backend } from "../utils/utils";
+import geniusai from "../images/geniusAI.png";
 
 const MenuHeader = () => {
   const navigate = useNavigate(); // Initialize the useNavigate hook
@@ -109,17 +110,17 @@ const MenuHeader = () => {
       borderBottomColor="blue.500"
       borderBottomWidth={1}
     >
-      <Text
-        fontSize="2xl"
-        fontWeight={isLogoHovered ? "bold" : "bold"} // Set font weight based on isLogoHovered state
-        onClick={handleLogoClick}
-        style={{ cursor: "pointer" }}
-        color="blue.500"
-        onMouseEnter={handleLogoMouseEnter} // Handle mouse enter event for "GenuisAI"
-        onMouseLeave={handleLogoMouseLeave} // Handle mouse leave event for "GenuisAI"
-      >
-        GeniusAI
-      </Text>
+      <Link to="/landing">
+        <Image
+          src={geniusAi}
+          boxSize="50px"
+          objectFit="contain"
+          cursor="pointer"
+          onClick={handleLogoClick}
+          onMouseEnter={handleLogoMouseEnter} // Handle mouse enter event for "GenuisAI"
+          onMouseLeave={handleLogoMouseLeave} // Handle mouse leave event for "GenuisAI"
+        />
+      </Link>
       <IconButton
         icon={<HamburgerIcon color="white" />} // Set the icon color to white
         onClick={onOpen}
