@@ -1,5 +1,4 @@
 # Git ignore file
-/frontend/.env
+.env
 /frontend/node_modules
-/backend/.env
 /backend/firebase_config.py
