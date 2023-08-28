@@ -225,6 +225,6 @@ def get_answer():
             'status': 'Failed'
         })
 
-if __name__ == '__main__':
-    app.run(port=3001)
-    print('Server listening on port 3001')
+# if __name__ == '__main__':
+#     app.run(port=3001)
+#     print('Server listening on port 3001')

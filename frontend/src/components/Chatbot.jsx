@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 import {
   Box,
   Button,
@@ -17,20 +17,25 @@ import {
   VStack,
   Text,
   Image,
-} from '@chakra-ui/react';
-import { ChatIcon } from '@chakra-ui/icons';
+} from "@chakra-ui/react";
+import { ChatIcon } from "@chakra-ui/icons";
 
-import micImage from '../assets/mic2.jpg'; // import the image here
-import { Backend } from '../utils/utils';
+import micImage from "../assets/mic2.jpg"; // import the image here
+import { Backend } from "../utils/utils";
 
-import { useForm } from 'react-hook-form';
+import { useForm } from "react-hook-form";
 
 const Chatbot = () => {
-  const { register, handleSubmit, reset, formState: { errors } } = useForm();
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = React.useRef();
 
-  const [typedMessage, setTypedMessage] = useState(''); // For typed input
+  const [typedMessage, setTypedMessage] = useState(""); // For typed input
   const [chatHistory, setChatHistory] = useState([]);
   const [listening, setListening] = useState(false);
   const [recognition, setRecognition] = useState(null); // Speech recognition instance
@@ -41,20 +46,28 @@ const Chatbot = () => {
 
   const handleSendMessage = async () => {
     try {
-      const response = await Backend.post('/api/chatbot', { message: typedMessage });
+      const response = await Backend.post("/api/chatbot", {
+        message: typedMessage,
+      });
 
       // Add user's message to chat history
-      setChatHistory((prev) => [...prev, { message: typedMessage, sentByUser: true }]);
+      setChatHistory((prev) => [
+        ...prev,
+        { message: typedMessage, sentByUser: true },
+      ]);
 
       // If successful response, add AI's message to chat history
       if (response.data.message) {
-        setChatHistory((prev) => [...prev, { message: response.data.message, sentByUser: false }]);
+        setChatHistory((prev) => [
+          ...prev,
+          { message: response.data.message, sentByUser: false },
+        ]);
       }
     } catch (err) {
       console.error("Error sending message:", err);
     }
 
-    setTypedMessage(''); // clear the typed input
+    setTypedMessage(""); // clear the typed input
     reset(); // clear the form
     setListening(false); // stop microphone
 
@@ -67,7 +80,7 @@ const Chatbot = () => {
 
   useEffect(() => {
     let newRecognition;
-    if ('webkitSpeechRecognition' in window) {
+    if ("webkitSpeechRecognition" in window) {
       newRecognition = new window.webkitSpeechRecognition();
       newRecognition.continuous = true;
       newRecognition.interimResults = false; // Only get the final result
@@ -77,11 +90,13 @@ const Chatbot = () => {
       };
 
       newRecognition.onresult = function (event) {
-        var transcript = '';
+        var transcript = "";
         for (let i = event.resultIndex; i < event.results.length; ++i) {
           transcript += event.results[i][0].transcript;
         }
-        setTypedMessage((prevTypedMessage) => prevTypedMessage + ' ' + transcript); // Update typedMessage state
+        setTypedMessage(
+          (prevTypedMessage) => prevTypedMessage + " " + transcript
+        ); // Update typedMessage state
       };
 
       newRecognition.onerror = function (event) {
@@ -95,7 +110,7 @@ const Chatbot = () => {
         }
       };
     } else {
-      console.error('Browser does not support speech recognition.');
+      console.error("Browser does not support speech recognition.");
     }
 
     setRecognition(newRecognition);
@@ -130,7 +145,12 @@ const Chatbot = () => {
         colorScheme="blue"
       />
 
-      <Drawer isOpen={isOpen} placement="right" onClose={onClose} finalFocusRef={btnRef}>
+      <Drawer
+        isOpen={isOpen}
+        placement="right"
+        onClose={onClose}
+        finalFocusRef={btnRef}
+      >
         <DrawerOverlay />
         <DrawerContent>
           <DrawerCloseButton />
@@ -139,8 +159,13 @@ const Chatbot = () => {
           <DrawerBody>
             <VStack spacing={4} align="stretch">
               {chatHistory.map((chat, index) => (
-                <Box key={index} alignSelf={chat.sentByUser ? 'flex-end' : 'flex-start'}>
-                  <Text color={chat.sentByUser ? 'blue.500' : 'gray.500'}>{chat.message}</Text>
+                <Box
+                  key={index}
+                  alignSelf={chat.sentByUser ? "flex-end" : "flex-start"}
+                >
+                  <Text color={chat.sentByUser ? "blue.500" : "gray.500"}>
+                    {chat.message}
+                  </Text>
                 </Box>
               ))}
             </VStack>
@@ -159,12 +184,20 @@ const Chatbot = () => {
                   onChange={handleInputChange} // update 'typedMessage' state while typing
                 />
                 <InputRightElement width="4.5rem">
-                  <Button h="1.75rem" size="sm" onClick={() => setListening(!listening)}>
-                    <Image src={micImage} boxSize="20px" color={listening ? 'red.500' : 'gray.500'} />
+                  <Button
+                    h="1.75rem"
+                    size="sm"
+                    onClick={() => setListening(!listening)}
+                  >
+                    <Image
+                      src={micImage}
+                      boxSize="20px"
+                      color={listening ? "red.500" : "gray.500"}
+                    />
                   </Button>
                 </InputRightElement>
               </InputGroup>
-              <Button colorScheme="red" onClick={handleClearChat}>
+              <Button colorScheme="red" onClick={handleClearChat} mr={2}>
                 Clear Chat
               </Button>
               <Button colorScheme="blue" type="submit">
