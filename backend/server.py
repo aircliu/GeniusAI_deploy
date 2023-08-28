@@ -1,24 +1,13 @@
 from flask import Flask, jsonify, request, session
 import pyrebase
+from firebase_config import firebase_config
 
 import requests
 import openai
 import os
 from dotenv import load_dotenv
 
-config = {
-    'apiKey': "AIzaSyAuUkkIawV8MjiOGSqT2vhIOqFvm4PSZMQ",
-    'authDomain': "geniusai-f1013.firebaseapp.com",
-    'databaseURL': "https://geniusai-f1013-default-rtdb.firebaseio.com",
-    'projectId': "geniusai-f1013",
-    'storageBucket': "geniusai-f1013.appspot.com",
-    'messagingSenderId': "568584365899",
-    'appId': "1:568584365899:web:e1b6c822e215c8f5bdaace",
-    'measurementId': "G-EQHRHKWQ5C",
-    'databaseURL': '',
-}
-
-firebase = pyrebase.initialize_app(config)
+firebase = pyrebase.initialize_app(firebase_config)
 auth = firebase.auth()
 
 import firebase_admin
@@ -40,10 +29,10 @@ from flask_cors import CORS
 
 app = Flask(__name__)
 app.secret_key = os.getenv('SECRETKEY')
-openai.organization = os.environ['OPENAI_ORG']
-openai.api_key = os.environ['OPENAI_API_KEY']
+openai.organization = os.getenv('OPENAI_ORG')
+openai.api_key = os.getenv('OPENAI_API_KEY')
 # Tell 3001 to expect requests from 3000
-CORS(app, resources={r"/api/*": {"origins": os.getenv('REACT_APP_PROD_HOST'), "methods": ["GET", "POST", "PUT", "DELETE"]}}, supports_credentials=True)
+CORS(app, resources={r"/api/*": {"origins": [os.getenv('REACT_APP_PROD_HOST'), os.getenv('REACT_APP_PROD_HOST_ALT'), os.getenv('REACT_APP_HOST')], "methods": ["GET", "POST", "PUT", "DELETE"]}}, supports_credentials=True)
 
 # cursor = db.cursor()
 
@@ -210,12 +199,10 @@ def chatbot():
 # Knowledge Base Test
 @app.route('/api/kb-test', methods=['POST'])
 def get_answer():
-    # endpoint = 'https://geniusai.cognitiveservices.azure.com/language/query-knowledgebases'
-    endpoint = 'https://geniusai.cognitiveservices.azure.com/language/:query-knowledgebases?projectName=GeniusAI&deploymentName=GeniusAI&api-version=2021-10-01'
-    subscription_key = '219884db90984d02b0264a2d814edf65'
+    endpoint = os.getenv('AZURE_ENDPOINT')
 
     headers = {
-        "Ocp-Apim-Subscription-Key": "219884db90984d02b0264a2d814edf65"
+        "Ocp-Apim-Subscription-Key": os.getenv('AZURE_SUBSCRIPTION_KEY')
     }
 
     data = {
@@ -237,3 +224,7 @@ def get_answer():
         return jsonify({
             'status': 'Failed'
         })
+
+if __name__ == '__main__':
+    app.run(port=3001)
+    print('Server listening on port 3001')

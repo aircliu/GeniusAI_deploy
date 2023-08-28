@@ -59,7 +59,7 @@ def query_openai(prompt = ""):
     #Temperature is a measure of randomness
     #Max_token number of tokens to generate
     response = openai.Completion.create(
-        engine = "text-ada-001",
+        engine = "davinci",
         prompt=prompt,
         temperature = 0.3,
         max_tokens=80
