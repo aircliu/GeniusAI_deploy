@@ -18,6 +18,8 @@ import {
   useDisclosure,
   Collapse,
   Box,
+  Link,
+  Image,
 } from "@chakra-ui/react";
 
 import {
@@ -29,7 +31,7 @@ import {
 import { useNavigate } from "react-router-dom"; // Import the useNavigate hook
 
 import { Backend } from "../utils/utils";
-import geniusai from "../images/geniusAI.png";
+import geniusAI from "../assets/geniusAI.png";
 
 const MenuHeader = () => {
   const navigate = useNavigate(); // Initialize the useNavigate hook
@@ -96,10 +98,8 @@ const MenuHeader = () => {
   return (
     <Flex
       as="nav"
-      align="center"
-      justify="space-between"
-      wrap="wrap"
-      padding="1.0rem"
+      justifyContent="space-between"
+      alignItems="center"
       bg="black"
       color="blue.500"
       position="fixed"
@@ -109,22 +109,21 @@ const MenuHeader = () => {
       left={0}
       borderBottomColor="blue.500"
       borderBottomWidth={1}
+      padding={3}
     >
-      <Link to="/landing">
-        <Image
-          src={geniusAi}
-          boxSize="50px"
-          objectFit="contain"
-          cursor="pointer"
-          onClick={handleLogoClick}
-          onMouseEnter={handleLogoMouseEnter} // Handle mouse enter event for "GenuisAI"
-          onMouseLeave={handleLogoMouseLeave} // Handle mouse leave event for "GenuisAI"
-        />
-      </Link>
+      <Image
+        src={geniusAI}
+        cursor="pointer"
+        boxSize="11%"
+        onClick={handleLogoClick}
+        onMouseEnter={handleLogoMouseEnter} // Handle mouse enter event for "GenuisAI"
+        onMouseLeave={handleLogoMouseLeave} // Handle mouse leave event for "GenuisAI"
+      />
       <IconButton
         icon={<HamburgerIcon color="white" />} // Set the icon color to white
         onClick={onOpen}
         isRound={true}
+        alignSelf="center"
         size="md"
         colorScheme="blue" // The color scheme is set to blue
       />
@@ -167,7 +166,7 @@ const MenuHeader = () => {
                     >
                       Introduction to Programming With Python
                     </ListItem>
-                    <ListItem
+                    {/* <ListItem
                       onClick={handleLeetcodeClick}
                       fontWeight={isLeetcodeHovered ? "bold" : "normal"} // Set font weight based on isLeetcodeHovered state
                       onMouseEnter={handleLeetcodeMouseEnter} // Handle mouse enter event for "LeetCode Mastery"
@@ -175,7 +174,7 @@ const MenuHeader = () => {
                       style={{ cursor: "pointer" }}
                     >
                       LeetCode Mastery
-                    </ListItem>
+                    </ListItem> */}
                   </List>
                 </Collapse>
               </ListItem>

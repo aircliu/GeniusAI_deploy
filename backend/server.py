@@ -5,6 +5,7 @@ import requests
 import openai
 import os
 from dotenv import load_dotenv
+load_dotenv()
 
 firebase_config = {
     "apiKey": os.getenv("FIREBASE_API_KEY"),
@@ -43,7 +44,7 @@ app.secret_key = os.getenv('SECRETKEY')
 openai.organization = os.getenv('OPENAI_ORG')
 openai.api_key = os.getenv('OPENAI_API_KEY')
 # Tell 3001 to expect requests from 3000
-CORS(app, resources={r"/api/*": {"origins": [os.getenv('REACT_APP_PROD_HOST'), os.getenv('REACT_APP_PROD_HOST_ALT'), os.getenv('REACT_APP_HOST')], "methods": ["GET", "POST", "PUT", "DELETE"]}}, supports_credentials=True)
+CORS(app, resources={r"/api/*": {"origins": [os.getenv('REACT_APP_HOST'), os.getenv('REACT_APP_PROD_HOST'), os.getenv('REACT_APP_PROD_HOST_ALT')], "methods": ["GET", "POST", "PUT", "DELETE"]}}, supports_credentials=True)
 
 # cursor = db.cursor()
 
@@ -197,10 +198,12 @@ def chatbot():
     #Set up chat models and word limit
 
     try:
+        
         response = openai.Completion.create(
-            engine='text-ada-001',
+            engine="text-davinci-003",
             prompt=message,
-            max_tokens=50
+            temperature=0.3, # measurement of randomness
+            max_tokens=150
         )
     except Exception as e:
         return jsonify({"error": "OpenAI Error", "message": str(e)}), 500
@@ -236,6 +239,6 @@ def get_answer():
             'status': 'Failed'
         })
 
-# if __name__ == '__main__':
-#     app.run(port=3001)
-#     print('Server listening on port 3001')
+if __name__ == '__main__':
+    print('Server listening on port 3001')
+    app.run(port=3001)

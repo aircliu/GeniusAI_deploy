@@ -1,4 +1,3 @@
-"use client";
 import React from "react";
 import MenuHeader from "../components/MenuHeader";
 import Chatbot from "../components/Chatbot";
@@ -29,7 +28,6 @@ import {
 } from "@chakra-ui/react";
 
 import LessonCard from "../components/LessonCard";
-
 import pythonLogo from "../assets/python_logo.png";
 import trophy from "../assets/trophy.svg";
 import code from "../assets/code.svg";
@@ -76,26 +74,42 @@ const courseHighlights = [
 
 const Python = () => {
   return (
-    <Box bgColor="black" paddingBottom={20}>
-      <Flex direction="column" p="7rem 5rem 5rem" bgColor="black">
+    <Box bgColor="black" paddingBottom={20} overflow="hidden">
+      <Flex
+        direction="column"
+        p={{ base: "5rem 1rem", md: "20vh 5rem 5rem" }}
+        bgColor="black"
+      >
         <SiteCard mb={10}>
-          <Flex>
+          <Flex
+            direction={{ base: "column", md: "row" }}
+            align={{ base: "center", md: "flex-start" }}
+          >
             <Image
               src={pythonLogo}
               alt="Python Logo"
               w="50px"
               h="50px"
-              marginRight={2}
+              mb={{ base: 2, md: 0 }}
+              mr={{ base: 0, md: 2 }}
             />
-            <Heading color="white">
+            <Heading color="white" textAlign={{ base: "center", md: "left" }}>
               Introduction to Programming with Python
             </Heading>
           </Flex>
-          <Text fontSize="md" fontStyle="italic" color="white" mb={4}>
+          <Text
+            fontSize="md"
+            fontStyle="italic"
+            color="white"
+            mb={4}
+            overflowWrap="break-word"
+          >
             Master the fundamentals of Python programming with our cutting-edge
             AI technology and unleash your creativity to develop your own games
             and applications
-            <Divider my={4} borderColor="blue.500" borderWidth="1px" />
+          </Text>
+          <Divider my={4} borderColor="blue.500" borderWidth="1px" />
+          <Text fontSize="md" color="white" overflowWrap="break-word">
             To use our AI, press the chat button on the bottom right!
           </Text>
         </SiteCard>
@@ -149,7 +163,12 @@ const Python = () => {
         <Chatbot />
       </Flex>
       <Flex direction="column" bgColor="black" justifyContent="center">
-        <SimpleGrid justifyItems="center" minChildWidth={450} rowGap={40}>
+        <SimpleGrid
+          justifyItems="center"
+          minChildWidth={{ base: "280px", md: "450px" }}
+          rowGap={40}
+          p={{ base: "1rem", md: "2rem" }}
+        >
           <LessonCard
             title="Python Setup"
             imageSrc={setup}

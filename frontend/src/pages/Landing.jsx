@@ -51,13 +51,13 @@ const Landing = () => {
   };
 
   const handleLeetcodeClick = () => {
-    navigate("/leetcode");
+    navigate("/landing");
   };
 
   return (
     <Flex
       direction="column"
-      p="2rem 5rem 5rem"
+      p="10vh 5rem 5rem"
       bgColor="black"
       bgRepeat="no-repeat"
       bgSize="cover"
@@ -131,7 +131,7 @@ const Landing = () => {
               variant="solid"
               onClick={handleLeetcodeClick}
             >
-              Get Started
+              Coming soon...
             </Button>
           </VStack>
         </SiteCard>

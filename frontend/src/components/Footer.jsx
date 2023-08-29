@@ -59,7 +59,11 @@ const Footer = ({ opacity = 1, transition, style, fadeTime }) => {
         >
           <Text>Ostend's Github</Text>
         </Link>
-        <Link href="www.linkedin.com/in/aircliu" isExternal color="white">
+        <Link
+          href="https://www.linkedin.com/in/aircliu/"
+          isExternal
+          color="white"
+        >
           <Text>Eric's Linkedin</Text>
         </Link>
         <Link
