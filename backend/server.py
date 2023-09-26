@@ -66,7 +66,7 @@ def login():
                 'loggedIn': True,
                 'user': response['email'],
             }))
-            response.set_cookie('user_email', email)
+            response.set_cookie('user_email', email, samesite='None')
             return response
         except Exception as e:
             print('Failed to login')
