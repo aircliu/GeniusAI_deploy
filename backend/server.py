@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, request, session
+from flask import Flask, jsonify, request, session, make_response
 import pyrebase
 
 import requests
@@ -62,11 +62,12 @@ def login():
     if request.method == 'POST':
         response = auth.sign_in_with_email_and_password(email, password)
         try:
-            session['user'] = response['email']
-            return jsonify({
+            response = make_response(jsonify({
                 'loggedIn': True,
-                'user': email,
-            })
+                'user': response['email'],
+            }))
+            response.set_cookie('user_email', email)
+            return response
         except Exception as e:
             print('Failed to login')
             # error_json = json.loads(str(e))
@@ -149,13 +150,14 @@ def logout():
 
 @app.route('/api/login-info', methods=['GET'])
 def get_login_info():
-    try:
+    if request.cookies.get('user_email'):
+        user_email = request.cookies.get('user_email')
         return jsonify({
             'status': 'Success',
-            'user': session['user'], # Returned session['user'] originally
+            'user': user_email, # Returned session['user'] originally
             'loggedIn': True
         })
-    except:
+    else:
         return jsonify({
             'status': 'Success',
             'loggedIn': False
