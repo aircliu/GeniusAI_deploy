@@ -60,9 +60,9 @@ def login():
     if ('user' in session):
         return f"Welcome, {session['user']}"
     if request.method == 'POST':
+        response = auth.sign_in_with_email_and_password(email, password)
         try:
-            user = auth.sign_in_with_email_and_password(email, password)
-            session['user'] = email
+            session['user'] = response['email']
             return jsonify({
                 'loggedIn': True,
                 'user': email,
@@ -76,11 +76,13 @@ def login():
             # print(error_message)
             print(e)
             print(type(e))
+            print(response)
+            print(response['error'])
             # print(e.response)
             # print(e.response.json())
             return jsonify({
                 'loggedIn': False,
-                'error': str(e)
+                'error': response['error']['message']
             })
     else:
         print('This was not a POST request')
@@ -150,7 +152,7 @@ def get_login_info():
     try:
         return jsonify({
             'status': 'Success',
-            'user': 'dummy@gmail.com', # Returned session['user'] originally
+            'user': session['user'], # Returned session['user'] originally
             'loggedIn': True
         })
     except:
