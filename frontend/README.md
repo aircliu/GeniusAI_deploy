@@ -1,70 +1,49 @@
-# Getting Started with Create React App
+--Readme document for Eric Liu, Ostend Suryajaya, osuryaja@uci.edu,  ericl16@uci.edu, 44006512 (eric), 77801334(ostend)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+1. How many assignment points do you believe you completed (replace the \*'s with your numbers)?
 
-In the project directory, you can run:
+15/15
 
-### `npm start`
+- 5/5 Created a functional web app
+- 2/2 The ability to control the web app with basic gestures
+- 4/4 The ability to control the web app with at least two custom gestures
+- 2/2 Following good principles of UI design
+- 1/1 Creating a compelling app and application of gestures
+- 1/1 A readme and demo video which explains how these features were implemented and their design rationale
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+2. How long, in hours, did it take you to complete this assignment?
+   
+8
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+3. What online resources did you consult when completing this assignment? (list specific URLs)
 
-### `npm test`
+youtube
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+4. What classmates or other individuals did you consult as part of this assignment? What did you discuss?
 
-### `npm run build`
+Ostend Suryajaya, Eric Liu
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+5. Is there anything special we need to know in order to run your code?
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Front end is in React, so run npm i and npm start, for the backend it is in flask, so run pip install -r requirements.txt after you cd to backend then run server.py
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+--Aim for no more than two sentences for each of the following questions.--
 
-### `npm run eject`
+6. Did you design your app with a particular type of user in mind? If so, whom?
+Yes for people who want to learn how to code, and those who want to use hand gestures.
+7. Describe the two custom gestures you created.
+ 1 - One hand open and one point will you take you to Eric liu's linkedin
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+ 2 - One hand open and one hand closed will take you to ostend's github
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+8. How does your app implement or follow principles of good UI design?
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Resposive, User feedback and error checking. Easy navigation throughout the website and begineer friendly. 
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+DEMO VIDEO
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+https://youtu.be/fZe6-bqLkDU?feature=shared

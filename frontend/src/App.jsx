@@ -26,6 +26,7 @@ import ObjectOriented from "./pages/PythonPages/ObjectOriented";
 import Modules from "./pages/PythonPages/Modules";
 import Test from "./pages/Test";
 
+
 import Project from "./pages/PythonPages/Project";
 import Chatbot from "./components/Chatbot";
 import Footer from "./components/Footer";
@@ -41,11 +42,12 @@ const App = () => {
     </>
   );
 
+
   return (
     <ChakraProvider theme={theme}>
       <Router>
         <Routes>
-          <Route path="/" element={<Navigate to="/landing" />} />
+          <Route path="/" element={<Navigate to="/login" />} />
           <Route
             path="/landing"
             element={

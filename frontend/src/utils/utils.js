@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const Backend = axios.create({
-  baseURL: process.env.REACT_APP_BACKEND_HOST_PROD, // Switch to env variable later
+  baseURL: 'http://127.0.0.1:3001', // Switch to env variable later
   withCredentials: true,
 });
 

@@ -150,11 +150,11 @@ def logout():
 
 @app.route('/api/login-info', methods=['GET'])
 def get_login_info():
-    if True: # if request.cookies.get('user_email')
-        # user_email = request.cookies.get('user_email')
+    if request.cookies.get('user_email'): # if request.cookies.get('user_email')
+        user_email = request.cookies.get('user_email')
         return jsonify({
             'status': 'Success',
-            'user': "Dummy@gmail.com", # Returned user_email originally
+            'user': user_email, # Returned user_email originally
             'loggedIn': True
         })
     else:

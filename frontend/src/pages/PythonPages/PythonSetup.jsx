@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 
+import { useNavigate } from "react-router-dom";
+
 import {
   Flex,
   Heading,
@@ -15,6 +17,8 @@ import {
   ListItem,
 } from "@chakra-ui/react";
 
+import Handtracker from "../../utils/HandTracker";
+
 // framer motion
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -25,6 +29,28 @@ import AnimatedCard from "../../components/NewAnimation"; // import AnimatedCard
 
 const PythonSetup = () => {
   const [selectedId, setSelectedId] = useState(null);
+  const navigate = useNavigate();
+
+  const handlePrediction = (gesture) => {
+    console.log('Detected Gesture:', gesture);
+    if (gesture === 'Open Hand') {
+      navigate('/python-fundamentals');
+    } else if (gesture === 'Close Hand') {
+      navigate('/python')
+    } else if (gesture === 'Hand Pointing'){
+      navigate('/landing')
+    } else if (gesture === 'Two Hands Pinching') {
+      navigate('/login')
+    } else if (gesture === 'Two Hands Pointing') {
+      navigate('/python')
+    } else if (gesture === 'Open Linkedin') {
+      window.location.href = 'https://www.linkedin.com/in/aircliu/';
+    } else if (gesture === 'Open Github') {
+      window.location.href = 'https://github.com/Aokijiop';
+    }
+    
+    // You can perform additional actions based on the detected gesture
+  };
 
   return (
     <Flex direction="column" p="7rem 5rem 5rem" bgColor="black">
@@ -201,6 +227,7 @@ const PythonSetup = () => {
           </CardBody>
         </Card>
       </SiteCard>
+      <Handtracker onPrediction={handlePrediction} />
     </Flex>
   );
 };

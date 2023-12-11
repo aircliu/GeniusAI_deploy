@@ -19,9 +19,32 @@ import Chatbot from "../../components/Chatbot";
 import AnimatedCard from "../../components/NewAnimation";
 import CodeBlock from "../../components/CodeBlock";
 import { FaGithub } from "react-icons/fa"; // Importing the GitHub icon
+import { useNavigate } from "react-router-dom";
+import Handtracker from "../../utils/HandTracker";
 
 const Project = () => {
   const [selectedId, setSelectedId] = useState(null);
+
+  const navigate = useNavigate();
+
+  const handlePrediction = (gesture) => {
+    console.log('Detected Gesture:', gesture);
+    if (gesture === 'Open Hand') {
+      navigate('/landing');
+    } else if (gesture === 'Close Hand') {
+      navigate('/python')
+    } else if (gesture === 'Hand Pointing'){
+      navigate('/landing')
+    } else if (gesture === 'Two Hands Pinching') {
+      navigate('/login')
+    } else if (gesture === 'Two Hands Pointing') {
+      navigate('/project')
+    } else if (gesture === 'Open Linkedin') {
+      window.location.href = 'https://www.linkedin.com/in/aircliu/';
+    } else if (gesture === 'Open Github') {
+      window.location.href = 'https://github.com/Aokijiop';
+    }
+  };
 
   return (
     <>
@@ -131,6 +154,7 @@ const Project = () => {
             </Flex>
           </CardBody>
         </SiteCard>
+        <Handtracker onPrediction={handlePrediction} />
       </Flex>
     </>
   );

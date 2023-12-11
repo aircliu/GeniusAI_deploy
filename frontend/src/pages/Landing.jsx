@@ -16,9 +16,32 @@ import SiteCard from "../components/SiteCard";
 import { Backend } from "../utils/utils";
 import { useNavigate } from "react-router-dom";
 import Footer from "../components/Footer";
+import Handtracker from "../utils/HandTracker";
 
 const Landing = () => {
   const navigate = useNavigate();
+
+  const handlePrediction = (gesture) => {
+    console.log('Detected Gesture:', gesture);
+    if (gesture === 'Open Hand') {
+      navigate('/python');
+    } else if (gesture === 'Close Hand') {
+      navigate('/login')
+    } else if (gesture === 'Hand Pointing'){
+      navigate('/landing')
+    } else if (gesture === 'Two Hands Pinching') {
+      navigate('/login')
+    } else if (gesture === 'Two Hands Pointing') {
+      navigate('/landing')
+    } else if (gesture === 'Open Linkedin') {
+      window.location.href = 'https://www.linkedin.com/in/aircliu/';
+    } else if (gesture === 'Open Github') {
+      window.location.href = 'https://github.com/Aokijiop';
+    }
+  }
+
+
+
   const [fadeInStartingPage, setFadeInStartingPage] = useState(true);
   const [fadeInHeading, setFadeInHeading] = useState(false);
   const [fadeInContent, setFadeInContent] = useState(false);
@@ -153,6 +176,7 @@ const Landing = () => {
       </Flex>
       <Spacer mb={20} />
       <Footer fadeTime={2500} />
+      <Handtracker onPrediction={handlePrediction} />
     </Flex>
   );
 };

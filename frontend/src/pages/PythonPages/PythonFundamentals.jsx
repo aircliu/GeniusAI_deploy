@@ -19,7 +19,33 @@ import CodeBlock from "../../components/CodeBlock";
 import AnimatedCard from "../../components/NewAnimation";
 import NewAnimatedCard from "../../components/NewAnimation";
 
+import { useNavigate } from "react-router-dom";
+import Handtracker from "../../utils/HandTracker";
+
 const PythonFundamentals = () => {
+  const navigate = useNavigate();
+
+  const handlePrediction = (gesture) => {
+    console.log('Detected Gesture:', gesture);
+    if (gesture === 'Open Hand') {
+      navigate('/conditionals-and-control-flow');
+    } else if (gesture === 'Close Hand') {
+      navigate('/python-setup')
+    } else if (gesture === 'Hand Pointing'){
+      navigate('/landing')
+    } else if (gesture === 'Two Hands Pinching') {
+      navigate('/login')
+    } else if (gesture === 'Two Hands Pointing') {
+      navigate('/python')
+    } else if (gesture === 'Open Linkedin') {
+      window.location.href = 'https://www.linkedin.com/in/aircliu/';
+    } else if (gesture === 'Open Github') {
+      window.location.href = 'https://github.com/Aokijiop';
+    }
+    
+    // You can perform additional actions based on the detected gesture
+  };
+
   const questions = [
     {
       id: "1",
@@ -229,6 +255,7 @@ const PythonFundamentals = () => {
             />
           ))}
         </SiteCard>
+        <Handtracker onPrediction={handlePrediction} />
       </Flex>
     </>
   );

@@ -1,6 +1,7 @@
 import React from "react";
 import MenuHeader from "../components/MenuHeader";
-import Chatbot from "../components/Chatbot";
+import { useNavigate } from "react-router-dom";
+import Handtracker from "../utils/HandTracker";
 import {
   Flex,
   Box,
@@ -73,6 +74,28 @@ const courseHighlights = [
 // ]
 
 const Python = () => {
+  const navigate = useNavigate();
+
+  const handlePrediction = (gesture) => {
+    console.log('Detected Gesture:', gesture);
+    if (gesture === 'Open Hand') {
+      navigate('/python-setup');
+    } else if (gesture === 'Close Hand') {
+      navigate('/landing')
+    } else if (gesture === 'Hand Pointing'){
+      navigate('/landing')
+    } else if (gesture === 'Two Hands Pinching') {
+      navigate('/login')
+    } else if (gesture === 'Two Hands Pointing') {
+      navigate('/python')
+    } else if (gesture === 'Open Linkedin') {
+      window.location.href = 'https://www.linkedin.com/in/aircliu/';
+    } else if (gesture === 'Open Github') {
+      window.location.href = 'https://github.com/Aokijiop';
+    }
+    
+    // You can perform additional actions based on the detected gesture
+  };
   return (
     <Box bgColor="black" paddingBottom={20} overflow="hidden">
       <Flex
@@ -160,7 +183,6 @@ const Python = () => {
             </List>
           </SiteCard>
         </Box>
-        <Chatbot />
       </Flex>
       <Flex direction="column" bgColor="black" justifyContent="center">
         <SimpleGrid
@@ -206,6 +228,7 @@ const Python = () => {
           />
         </SimpleGrid>
       </Flex>
+      <Handtracker onPrediction={handlePrediction} />
     </Box>
   );
 };

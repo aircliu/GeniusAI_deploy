@@ -17,16 +17,36 @@ import {
 
 // framer motion
 import { motion, AnimatePresence } from "framer-motion";
-
+import Handtracker from "../../utils/HandTracker";
 import MenuHeader from "../../components/MenuHeader";
 import SiteCard from "../../components/SiteCard";
 import Chatbot from "../../components/Chatbot";
 import AnimatedCard from "../../components/NewAnimation"; // import AnimatedCard
 import CodeBlock from "../../components/CodeBlock";
+import { useNavigate } from "react-router-dom";
 
 const ObjectOriented = () => {
   const [selectedId, setSelectedId] = useState(null);
+  const navigate = useNavigate();
 
+  const handlePrediction = (gesture) => {
+    console.log('Detected Gesture:', gesture);
+    if (gesture === 'Open Hand') {
+      navigate('/modules');
+    } else if (gesture === 'Close Hand') {
+      navigate('/python')
+    } else if (gesture === 'Hand Pointing'){
+      navigate('/landing')
+    } else if (gesture === 'Two Hands Pinching') {
+      navigate('/login')
+    } else if (gesture === 'Two Hands Pointing') {
+      navigate('object-oriented')
+    } else if (gesture === 'Open Linkedin') {
+      window.location.href = 'https://www.linkedin.com/in/aircliu/';
+    } else if (gesture === 'Open Github') {
+      window.location.href = 'https://github.com/Aokijiop';
+    }
+  };
   const questions = [
     {
       id: "1",
@@ -286,6 +306,7 @@ const ObjectOriented = () => {
             />
           ))}
         </SiteCard>
+        <Handtracker onPrediction={handlePrediction} />
       </Flex>
     </>
   );
